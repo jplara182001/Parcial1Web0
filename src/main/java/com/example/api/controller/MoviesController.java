@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -23,6 +24,11 @@ public class MoviesController {
     @GetMapping
     public List<MoviesEntity> readData() {
         return moviesServices.getAllMovies();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<MoviesEntity> readDataById(@PathVariable UUID id) {
+        return moviesServices.getMoviesByID(id);
     }
 
     @PutMapping("/{id}")

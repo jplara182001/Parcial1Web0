@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -42,6 +43,10 @@ public class MoviesServices {
             return "Movie deleted";
         }
         return "Movie not found!";
+    }
+
+    public Optional<MoviesEntity> getMoviesByID(UUID id) {
+        return moviesRepository.findById(id);
     }
 
 
